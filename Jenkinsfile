@@ -1,7 +1,7 @@
 pipeline {
     agent any
-always {
-            cleanWs()  // Cleans workspace after pipeline finishes
+    always {
+            cleanWs()
         }
     stages {
         stage('Build'){
