@@ -29,12 +29,13 @@ pipeline {
 
                 sh '''
                     pwd
-                    echo "$Workspace"
+                    echo "$WORKSPACE"
                     ls -ltr
                     if [ -f '$WORKSPACE/build/index.html' ]; then
                         echo "index.html Found"
                     else
                         echo "index.html Not Found"
+                    fi
                 '''
             }
         }
