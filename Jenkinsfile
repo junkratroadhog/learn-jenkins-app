@@ -29,10 +29,14 @@ pipeline {
                     pwd
                     echo "$WORKSPACE"
                     ls -ltr
+                    npm test -a
+                '''
+                sh '''
                     if [ -f './build/index.html' ]; then
                         echo "index.html Found"
                     else
                         echo "index.html Not Found"
+                        exit 1
                     fi
                 '''
             }
