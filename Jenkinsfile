@@ -20,5 +20,13 @@ pipeline {
                 '''
             }
         }
+        stage('Test'){
+            agent any
+            steps{
+                sh '''
+                    ls -ltr ./build/index.html
+                '''
+            }
+        }
     }
 }
