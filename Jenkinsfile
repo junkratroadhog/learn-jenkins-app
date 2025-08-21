@@ -21,8 +21,9 @@ pipeline {
             }
         }
         stage('Test'){
-                // TEST
+            steps{
 
+                // TEST
                 sh '''
                     pwd
                     echo "$WORKSPACE"
@@ -35,5 +36,6 @@ pipeline {
                     npm test -a
                 '''
             }
-        }
+        }    
     }
+}
