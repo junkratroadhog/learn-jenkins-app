@@ -25,7 +25,7 @@ pipeline {
             steps{
                 sh '''
                     pwd
-                    df -h
+                    cd /var/jenkins_home/workspace/learn-jenkins-app@2/
                     ls- ltr
                 '''
             }
