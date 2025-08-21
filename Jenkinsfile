@@ -1,8 +1,8 @@
 pipeline {
     agent any
-    always {
-            cleanWs()
-        }
+    options {
+        cleanWs()
+            }
     stages {
         stage('Build'){
             agent{
@@ -29,7 +29,7 @@ pipeline {
                     pwd
                     cd $Workspace
                     ls -ltr
-                    if(fileExists('$Workspace/build/index.html')) {
+                    if {fileExists('$WORKSPACE/build/index.html')} {
                         echo "index.html Found"
                     } else {
                         echo "index.html Not Found"
