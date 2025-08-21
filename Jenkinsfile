@@ -21,50 +21,53 @@ pipeline {
             }
         }
         */
-        stage('Test'){
-            agent{
-                docker{
-                    image 'node:18-alpine'
-                    reuseNode true
-                }
-            }
-            steps{
+        stage('Tests'){
+            parallel{
+                stage('Unit Test'){
+                    agent{
+                    docker{
+                        image 'node:18-alpine'
+                        reuseNode true
+                        }
+                    }   
+                    steps{
 
-                // TEST
-                sh '''
-                    pwd
-                    echo "$WORKSPACE"
-                    ls -ltr
-                    npm test
-                '''
-                sh '''
-                    if [ -f './build/index.html' ]; then
-                        echo "index.html Found"
-                    else
-                        echo "index.html Not Found"
-                        exit 1
-                    fi
-                '''
+                        // TEST
+                        sh '''
+                        pwd
+                        echo "$WORKSPACE"
+                        ls -ltr
+                        npm test
+                        '''
+                        sh '''
+                        if [ -f './build/index.html' ]; then
+                            echo "index.html Found"
+                        else
+                            echo "index.html Not Found"
+                            exit 1
+                        fi
+                        '''
+                        }
+                    }
+                
+                stage('E2E'){
+                    agent{
+                        docker{
+                            image 'mcr.microsoft.com/playwright:v1.39.0-jammy'
+                            reuseNode true
+                            }
+                        }
+                    steps{
+                        sh '''
+                            npm install serve
+                            node_modules/.bin/serve -s build &
+                            sleep 10
+                            npx playwright test --reporter=html
+                        '''
+                    }
+                }    
+
             }
-        }
-        stage('E2E'){
-            agent{
-                docker{
-                    image 'mcr.microsoft.com/playwright:v1.39.0-jammy'
-                    reuseNode true
-                    
-                }
-            }
-            steps{
-                sh '''
-                    npm install serve
-                    node_modules/.bin/serve -s build &
-                    sleep 10
-                    npx playwright test --reporter=html
-                '''
-            }
-        }    
-    }
 
     post {
         always{
