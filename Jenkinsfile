@@ -26,7 +26,7 @@ pipeline {
                 sh '''
                     pwd
                     cd /var/jenkins_home/workspace/learn-jenkins-app@2/
-                    ls- ltr
+                    ls -ltr
                 '''
             }
         }
