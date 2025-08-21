@@ -24,7 +24,9 @@ pipeline {
             agent any
             steps{
                 sh '''
-                    ls -ltr ./build/index.html
+                    pwd
+                    df -h
+                    ls- ltr
                 '''
             }
         }
