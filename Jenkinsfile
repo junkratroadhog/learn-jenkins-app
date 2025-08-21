@@ -24,24 +24,18 @@ pipeline {
                     npm run build
                     ls -la
                 '''
-            }
-        }
 
-        stage('Test'){
-            agent any
-            steps{
+                // TEST
+
                 sh '''
                     pwd
-                    cd $Workspace
+                    echo "$Workspace"
                     ls -ltr
-                    '''
-
-                    if (fileExists('$WORKSPACE/build/index.html')) {
+                    if [ -f '$WORKSPACE/build/index.html' ]; then
                         echo "index.html Found"
-                    } else {
+                    else
                         echo "index.html Not Found"
-                    }
-                
+                '''
             }
         }
     }
