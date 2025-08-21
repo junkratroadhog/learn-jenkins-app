@@ -27,7 +27,6 @@ pipeline {
                     pwd
                     cd $Workspace
                     ls -ltr
-                    cd build
                     if(fileExists('$Workspace/build/index.html')) {
                         echo "index.html Found"
                     } else {
