@@ -25,7 +25,7 @@ pipeline {
                     pwd
                     echo "$WORKSPACE"
                     ls -ltr
-                    if [ -f '$WORKSPACE/build/index.html' ]; then
+                    if [ -f './build/index.html' ]; then
                         echo "index.html Found"
                     else
                         echo "index.html Not Found"
