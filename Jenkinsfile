@@ -30,8 +30,6 @@ pipeline {
                         }
                     }
                     steps{
-
-                        // TEST
                         sh '''
                         pwd
                         echo "$WORKSPACE"
