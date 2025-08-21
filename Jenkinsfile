@@ -34,12 +34,14 @@ pipeline {
                     pwd
                     cd $Workspace
                     ls -ltr
+                    '''
+                    
                     if {fileExists('$WORKSPACE/build/index.html')} {
                         echo "index.html Found"
                     } else {
                         echo "index.html Not Found"
                     }
-                '''
+                
             }
         }
     }
