@@ -17,6 +17,7 @@ pipeline {
                     npm ci
                     npm run build
                     ls -la
+                    npm test -a
                 '''
             }
         }
@@ -33,7 +34,6 @@ pipeline {
                     else
                         echo "index.html Not Found"
                     fi
-                    npm test -a
                 '''
             }
         }    
