@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage{
+        stage('Cleanup'){
             steps{
                 cleanWs()
             }
@@ -26,7 +26,7 @@ pipeline {
                 '''
             }
         }
-        
+
         stage('Test'){
             agent any
             steps{
