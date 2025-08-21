@@ -25,8 +25,14 @@ pipeline {
             steps{
                 sh '''
                     pwd
-                    cd /var/jenkins_home/workspace/learn-jenkins-app@2/
+                    cd $Workspace
                     ls -ltr
+                    cd build
+                    if(fileExists('$Workspace/build/index.html')) {
+                        echo "index.html Found"
+                    } else {
+                        echo "index.html Not Found"
+                    }
                 '''
             }
         }
