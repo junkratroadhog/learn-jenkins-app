@@ -35,7 +35,7 @@ pipeline {
                     pwd
                     echo "$WORKSPACE"
                     ls -ltr
-                    npm test -a
+                    npm test
                 '''
                 sh '''
                     if [ -f './build/index.html' ]; then
