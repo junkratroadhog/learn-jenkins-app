@@ -91,6 +91,7 @@ pipeline {
                 docker{
                     image 'mcr.microsoft.com/playwright:v1.39.0-jammy'
                     reuseNode true
+                    }
                 }
             environment{
                     CI_ENVIRONMENT_URL = 'https://calm-beijinho-eb3037.netlify.app'
